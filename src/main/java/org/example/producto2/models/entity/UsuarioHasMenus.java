@@ -1,16 +1,13 @@
 package org.example.producto2.models.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
-@jakarta.persistence.Table(name = "usuario_has_menus", schema = "paracasa", catalog = "")
+@Table(name = "usuario_has_menus", schema = "paracasa", catalog = "")
 public class UsuarioHasMenus {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @jakarta.persistence.Column(name = "id_menu")
+    @Column(name = "id_menu")
     private int idMenu;
 
     public int getIdMenu() {
@@ -23,7 +20,7 @@ public class UsuarioHasMenus {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @jakarta.persistence.Column(name = "id_usuario")
+    @Column(name = "id_usuario")
     private int idUsuario;
 
     public int getIdUsuario() {

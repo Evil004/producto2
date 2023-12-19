@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 public class Menu {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @jakarta.persistence.Column(name = "id")
+    @Column(name = "id")
     private int id;
 
     public int getId() {

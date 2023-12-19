@@ -1,12 +1,12 @@
 package org.example.producto2.models.entity;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
 @Entity
 public class Producto {
-    @jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
-    @jakarta.persistence.Id
-    @jakarta.persistence.Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "id")
     private int id;
 
     public int getId() {
@@ -17,8 +17,8 @@ public class Producto {
         this.id = id;
     }
 
-    @jakarta.persistence.Basic
-    @jakarta.persistence.Column(name = "nombre")
+    @Basic
+    @Column(name = "nombre")
     private String nombre;
 
     public String getNombre() {
@@ -29,8 +29,8 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    @jakarta.persistence.Basic
-    @jakarta.persistence.Column(name = "descripcion")
+    @Basic
+    @Column(name = "descripcion")
     private String descripcion;
 
     public String getDescripcion() {
@@ -41,8 +41,8 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    @jakarta.persistence.Basic
-    @jakarta.persistence.Column(name = "kcal")
+    @Basic
+    @Column(name = "kcal")
     private int kcal;
 
     public int getKcal() {
@@ -53,8 +53,8 @@ public class Producto {
         this.kcal = kcal;
     }
 
-    @jakarta.persistence.Basic
-    @jakarta.persistence.Column(name = "id_tipo")
+    @Basic
+    @Column(name = "id_tipo")
     private int idTipo;
 
     public int getIdTipo() {
