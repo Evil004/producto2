@@ -3,6 +3,7 @@ package org.example.producto2.models.entity;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "usuario", schema = "paracasa", catalog = "")
 public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
