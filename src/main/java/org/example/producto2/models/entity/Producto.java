@@ -68,6 +68,13 @@ public class Producto {
         this.tipo = idTipo;
     }
 
+
+
     @ManyToMany(mappedBy = "productos")
     Set<Menu> menus;
+
+    public Set<Menu> getMenus() {
+        return menus;
+    }
+
 }

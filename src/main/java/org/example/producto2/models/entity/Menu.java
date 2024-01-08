@@ -52,4 +52,8 @@ public class Menu {
     )
     Set<Producto> productos;
 
+    public Set<Producto> getProductos() {
+        return productos;
+    }
+
 }
