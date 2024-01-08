@@ -54,15 +54,15 @@ public class Producto {
         this.kcal = kcal;
     }
 
-    @Basic
-    @Column(name = "id_tipo")
-    private int idTipo;
+    @ManyToOne
+    @JoinColumn(name = "id_tipo")
+    private Tipo tipo;
 
-    public int getIdTipo() {
-        return idTipo;
+    public Tipo getTipo() {
+        return tipo;
     }
 
-    public void setIdTipo(int idTipo) {
-        this.idTipo = idTipo;
+    public void setTipo(Tipo idTipo) {
+        this.tipo = idTipo;
     }
 }

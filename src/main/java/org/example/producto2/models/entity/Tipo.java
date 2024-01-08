@@ -2,6 +2,8 @@ package org.example.producto2.models.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "tipo", schema = "paracasa", catalog = "")
 public class Tipo {
@@ -41,4 +43,7 @@ public class Tipo {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    @OneToMany(mappedBy = "tipo")
+    private List<Producto> Producto;
 }
