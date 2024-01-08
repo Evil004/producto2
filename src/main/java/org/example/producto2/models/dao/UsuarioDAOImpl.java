@@ -1,4 +1,4 @@
-package org.example.producto2.dao;
+package org.example.producto2.models.dao;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;

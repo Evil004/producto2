@@ -1,4 +1,4 @@
-package org.example.producto2.dao;
+package org.example.producto2.models.dao;
 
 import org.example.producto2.models.entity.Menu;
 
