@@ -10,8 +10,6 @@
       <property name="connection.password">secret</property>
     <mapping resource="Menu.hbm.xml"/>
     <mapping class="org.example.producto2.models.entity.Menu"/>
-    <mapping class="org.example.producto2.models.entity.MenuHasProductos"/>
-    <mapping resource="MenuHasProductos.hbm.xml"/>
     <mapping class="org.example.producto2.models.entity.Pedido"/>
     <mapping resource="Pedido.hbm.xml"/>
     <mapping resource="Producto.hbm.xml"/>
@@ -20,8 +18,6 @@
     <mapping class="org.example.producto2.models.entity.Tipo"/>
     <mapping resource="Usuario.hbm.xml"/>
     <mapping class="org.example.producto2.models.entity.Usuario"/>
-    <mapping class="org.example.producto2.models.entity.UsuarioHasMenus"/>
-    <mapping resource="UsuarioHasMenus.hbm.xml"/>
 
     <!-- <property name="connection.username"/> -->
     <!-- <property name="connection.password"/> -->

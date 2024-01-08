@@ -56,4 +56,7 @@ public class Menu {
         return productos;
     }
 
+    @ManyToMany(mappedBy = "menus")
+    Set<Usuario> usuarios;
+
 }
