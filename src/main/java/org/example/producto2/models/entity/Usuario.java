@@ -3,6 +3,7 @@ package org.example.producto2.models.entity;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "usuario", schema = "paracasa", catalog = "")
@@ -70,4 +71,12 @@ public class Usuario {
 
    @OneToMany(mappedBy = "usuario")
     private List<Pedido> pedidos;
+
+    @ManyToMany
+    @JoinTable(
+            name = "usuario_menus",
+            joinColumns = @JoinColumn(name = "usuario_id"),
+            inverseJoinColumns = @JoinColumn(name = "menu_id")
+    )
+    Set<Menu> menus;
 }

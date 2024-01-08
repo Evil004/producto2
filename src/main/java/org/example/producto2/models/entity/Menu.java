@@ -52,4 +52,7 @@ public class Menu {
     )
     Set<Producto> productos;
 
+    @ManyToMany(mappedBy = "menus")
+    Set<Usuario> usuarios;
+
 }
