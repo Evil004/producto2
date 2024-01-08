@@ -2,6 +2,8 @@ package org.example.producto2.models.entity;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "menu", schema = "paracasa", catalog = "")
 public class Menu {
@@ -41,4 +43,13 @@ public class Menu {
     public void setPrecio(Double precio) {
         this.precio = precio;
     }
+
+    @ManyToMany
+    @JoinTable(
+            name = "menu_producto",
+            joinColumns = @JoinColumn(name = "menu_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id")
+    )
+    Set<Producto> productos;
+
 }
