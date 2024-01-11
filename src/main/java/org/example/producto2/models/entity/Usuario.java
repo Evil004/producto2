@@ -69,6 +69,28 @@ public class Usuario {
         this.telefono = telefono;
     }
 
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+    @Basic
+    @Column(name = "rol")
+    private String rol;
+
+
+
+    @Basic
+    @Column(name = "password")
+    private String password;
+
+    public String getPassword() { return password;}
+
+    public void setPassword(String password) { this.password = password; }
+
    @OneToMany(mappedBy = "usuario")
     private List<Pedido> pedidos;
 
