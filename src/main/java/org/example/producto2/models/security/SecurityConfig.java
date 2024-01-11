@@ -21,12 +21,11 @@ public class SecurityConfig {
         Usuario usuario2 = new Usuario();
         usuario2.setNombre("pepe");
         usuario2.setPassword("{noop}test123");
-        usuario2.setRol("ADMIN");
 
         UserDetails pepe = User.builder()
                 .username(usuario2.getNombre())
                 .password(usuario2.getPassword())
-                .roles(usuario2.getRol())
+                .roles("ADMIN")
                 .build();
         return new InMemoryUserDetailsManager(pepe);
     }

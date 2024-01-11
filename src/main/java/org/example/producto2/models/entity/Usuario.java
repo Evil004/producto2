@@ -2,6 +2,7 @@ package org.example.producto2.models.entity;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -31,6 +32,18 @@ public class Usuario {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    @Basic
+    @Column(name = "username")
+    private String username;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Basic
@@ -69,20 +82,6 @@ public class Usuario {
         this.telefono = telefono;
     }
 
-    public String getRol() {
-        return rol;
-    }
-
-    public void setRol(String rol) {
-        this.rol = rol;
-    }
-
-    @Basic
-    @Column(name = "rol")
-    private String rol;
-
-
-
     @Basic
     @Column(name = "password")
     private String password;
@@ -101,4 +100,34 @@ public class Usuario {
             inverseJoinColumns = @JoinColumn(name = "menu_id")
     )
     Set<Menu> menus;
+
+    public Usuario() {
+    }
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "users_roles",
+            joinColumns = {
+                    @JoinColumn(name = "user_id", referencedColumnName =
+                            "id",
+                            nullable = false, updatable = false)},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "role_id", referencedColumnName = "id",
+                            nullable = false, updatable = false)}
+    )
+    private Set<Role> rolesAssociated = new HashSet<>();
+
+    public Set<Role> getRolesAssociated() {
+        return rolesAssociated;
+    }
+
+    public void setRolesAssociated(Set<Role> rolesAssociated) {
+        this.rolesAssociated = rolesAssociated;
+    }
+
+    public Usuario(String nombre, String email, String username, String password) {
+        this.nombre = nombre;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+    }
 }
