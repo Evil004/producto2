@@ -10,11 +10,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
 
     @Autowired
-    MenuDAOImpl menuRepository;
+    MenuDAOImpl menusService;
 
     @GetMapping("/")
-    public String showHome( Model model) {
-        model.addAttribute("menus", menuRepository.findAll());
+    public String showHome(Model model) {
+        model.addAttribute("menus", menusService.findAll());
+
+
         return "home";
     }
 
