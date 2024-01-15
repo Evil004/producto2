@@ -1,4 +1,4 @@
-package org.example.producto2.models.security;
+package org.example.producto2.security;
 
 import org.example.producto2.models.dao.UsuarioDAO;
 import org.example.producto2.models.entity.Usuario;
@@ -37,6 +37,7 @@ public class SecurityConfig {
                         configurer
                                 .anyRequest().authenticated()
                 )
+
                 .formLogin(form ->
                         form
                                 .loginPage("/login")
@@ -45,6 +46,7 @@ public class SecurityConfig {
                 )
                 .logout(logout -> logout.permitAll()
                 );
+
 
         return http.build();
     }

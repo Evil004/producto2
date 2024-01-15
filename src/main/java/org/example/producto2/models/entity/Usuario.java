@@ -1,6 +1,7 @@
 package org.example.producto2.models.entity;
 
 import jakarta.persistence.*;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.HashSet;
 import java.util.List;
@@ -129,5 +130,20 @@ public class Usuario {
         this.email = email;
         this.username = username;
         this.password = password;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", apellidos='" + apellidos + '\'' +
+                ", email='" + email + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", password='" + password + '\'' +
+                ", pedidos=" + pedidos +
+                ", menus=" + menus +
+                '}';
     }
 }
