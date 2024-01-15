@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -8,7 +10,33 @@
     <title>Document</title>
 </head>
 <body>
-<h1>Menus</h1>
+<header th:replace="fragments/header::header"></header>
+<div class="row">
+
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top"
+             src="https://media.istockphoto.com/id/1361394182/es/foto/divertido-retrato-de-gato-brit%C3%A1nico-de-pelo-corto-que-parece-sorprendido-o-sorprendido.jpg?s=612x612&w=0&k=20&c=OHduWWNsXcsWpOj69FhRvpWFlij_fB1PDfiZgnsvGHA="
+             alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Libanes</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top"
+             src="https://media.istockphoto.com/id/1361394182/es/foto/divertido-retrato-de-gato-brit%C3%A1nico-de-pelo-corto-que-parece-sorprendido-o-sorprendido.jpg?s=612x612&w=0&k=20&c=OHduWWNsXcsWpOj69FhRvpWFlij_fB1PDfiZgnsvGHA="
+             alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Libanes</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+
+</div>
 
 </body>
 </html>
