@@ -21,7 +21,7 @@ public class MenuDAOImpl implements MenuDAO{
     @Override
     @Transactional
     public void save(Menu menu) {
-    entityManager.persist(menu);
+        entityManager.persist(menu);
     }
 
     @Override

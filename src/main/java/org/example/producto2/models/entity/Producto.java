@@ -12,6 +12,12 @@ public class Producto {
     @Column(name = "id")
     private int id;
 
+    public Producto(String nombre, String descripcion, int kcal) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.kcal = kcal;
+    }
+
     public int getId() {
         return id;
     }

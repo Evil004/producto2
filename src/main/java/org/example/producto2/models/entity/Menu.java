@@ -12,6 +12,11 @@ public class Menu {
     @Column(name = "id")
     private int id;
 
+    public Menu(String nombre, double precio) {
+        this.nombre = nombre;
+        this.precio = precio;
+    }
+
     public int getId() {
         return id;
     }
