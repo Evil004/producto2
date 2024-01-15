@@ -17,6 +17,10 @@ public class Menu {
         this.precio = precio;
     }
 
+    public Menu () {
+
+    }
+
     public int getId() {
         return id;
     }
