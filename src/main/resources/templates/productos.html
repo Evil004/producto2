@@ -8,19 +8,43 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+
+    <script>
+        function deleteProduct(id) {
+            if (id) {
+                fetch('/productos/delete/' + id, {
+                    method: 'DELETE'
+                }).then(() => {
+                    location.reload()
+                });
+            } else {
+                console.error('Invalid ID');
+            }
+        }
+
+    </script>
+
 </head>
 <body>
 <header th:replace="fragments/header::header"></header>
+
+<a type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" href="/productos/create">
+    Add product
+</a>
 <div class="row">
 
-    <div th:each="producto : ${products}"  class="card" style="width: 18rem;">
+    <div th:each="producto : ${products}" class="card" style="width: 18rem;">
         <img class="card-img-top"
              src="https://media.istockphoto.com/id/1361394182/es/foto/divertido-retrato-de-gato-brit%C3%A1nico-de-pelo-corto-que-parece-sorprendido-o-sorprendido.jpg?s=612x612&w=0&k=20&c=OHduWWNsXcsWpOj69FhRvpWFlij_fB1PDfiZgnsvGHA="
              alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title" th:text="${producto.nombre}"></h5>
             <p class="card-text" th:text="${producto.descripcion}"></p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <a th:href="@{'/productos/'+${producto.id}}" class="btn btn-primary">Go somewhere</a>
+            <a th:href="@{'/productos/update/'+${producto.id}}" class="btn btn-primary">Edit</a>
+            <button th:onclick="@{'deleteProduct('+${producto.id}+')'}" class="btn btn-primary">Delete
+            </button>
+
         </div>
     </div>
 

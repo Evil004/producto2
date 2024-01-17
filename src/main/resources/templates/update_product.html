@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="#" th:actrion="@{/productos/update}" th:object="${product}" method="post">
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" th:field="*{nombre}" required>
+    <label for="description">Description</label>
+    <input type="text" name="description" id="description" th:field="*{descripcion}" required>
+    <label for="kcals">Kcals</label>
+    <input type="number" name="kcals" id="kcals" th:field="*{kcal}" required>
+    <input id="submit-button" type="submit" value="Submit">
+</form>
+</body>
+</html>

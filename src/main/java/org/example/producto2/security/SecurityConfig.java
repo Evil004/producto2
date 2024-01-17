@@ -40,7 +40,7 @@ public class SecurityConfig {
 
         http.authorizeHttpRequests(configurer ->
                         configurer.requestMatchers(antMatcher(HttpMethod.POST, "/*")).permitAll()
-                                .requestMatchers("/*").permitAll()
+                                .requestMatchers("/*/*","/*").permitAll()
                                 .anyRequest().authenticated()
                 ).csrf(AbstractHttpConfigurer::disable)
                 .formLogin(form ->
@@ -67,4 +67,8 @@ public class SecurityConfig {
                 .and()
                 .logout().logoutUrl("/logout").logoutSuccessUrl("/");
     }*/
+
+    /*
+
+     */
 }
