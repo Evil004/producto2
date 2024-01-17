@@ -19,8 +19,8 @@ public class ProductosController {
     }
 
     @GetMapping("/productos/{id}")
-    public String pedidos(Model model, @PathVariable(value = "id") final String id) {
-        model.addAttribute("producto", ProductService.findByID(Integer.parseInt(id)));
+    public String pedidos(Model model, @PathVariable(value = "id") final int id) {
+        model.addAttribute("producto", ProductService.findByID(id));
         return "vista_producto";
     }
 
@@ -38,9 +38,9 @@ public class ProductosController {
 
 
     @GetMapping("/productos/update/{id}")
-    public String updateProduct(Model model, @PathVariable(value = "id") final String id) {
+    public String updateProduct(Model model, @PathVariable(value = "id") final int id) {
 
-        Producto producto = ProductService.findByID(Integer.parseInt(id));
+        Producto producto = ProductService.findByID(id);
 
         model.addAttribute("product", producto);
         return "update_product";
@@ -54,8 +54,8 @@ public class ProductosController {
     }
 
     @DeleteMapping("/productos/delete/{id}")
-    public String deleteProduct(@PathVariable(value = "id") final String id) {
-        ProductService.delete(Integer.parseInt(id));
+    public String deleteProduct(@PathVariable(value = "id") final int id) {
+        ProductService.delete(id);
         return "redirect:/productos";
     }
 
