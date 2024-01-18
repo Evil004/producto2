@@ -3,6 +3,7 @@ package org.example.producto2.security;
 import org.example.producto2.models.dao.UsuarioDAO;
 import org.example.producto2.models.entity.Role;
 import org.example.producto2.models.entity.Usuario;
+import org.hibernate.Hibernate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -14,6 +15,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
 
@@ -28,10 +30,11 @@ public class SecurityConfig {
         Usuario[] usuarios = usuarioDAO.findAll();
 
         for(Usuario usuario : usuarios) {
+            Set<Role> roles = usuario.getRolesAssociated();
             UserDetails userDetails = User.builder()
                     .username(usuario.getUsername())
                     .password("{noop}" + usuario.getPassword())
-                    .roles("ADMIN")
+                    .roles(roles.stream().map(Role::getName).toArray(String[]::new))
                     .build();
 
             userDetailsList.add(userDetails);

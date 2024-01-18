@@ -105,7 +105,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinTable(name = "users_roles",
             joinColumns = {
                     @JoinColumn(name = "user_id", referencedColumnName =
