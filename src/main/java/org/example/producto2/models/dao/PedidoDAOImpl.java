@@ -2,6 +2,7 @@ package org.example.producto2.models.dao;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
+import jakarta.transaction.Transactional;
 import org.example.producto2.models.entity.Pedido;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -34,17 +35,20 @@ public class PedidoDAOImpl implements  PedidoDAO{
     }
 
     @Override
+    @Transactional
     public void update(Pedido pedido) {
         entityManager.merge(pedido);
 
     }
 
     @Override
+    @Transactional
     public void delete(long id) {
         entityManager.remove(findById(id));
     }
 
     @Override
+    @Transactional
     public void deleteAll() {
         Query q1 = entityManager.createQuery("delete from Pedido ");
         q1.executeUpdate();

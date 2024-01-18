@@ -37,17 +37,20 @@ public class MenuDAOImpl implements MenuDAO{
     }
 
     @Override
+    @Transactional
     public void update(Menu menu) {
 
         entityManager.merge(menu);
     }
 
     @Override
+    @Transactional
     public void delete(long id) {
         entityManager.remove(findById(id));
     }
 
     @Override
+    @Transactional
     public void deleteAll() {
         Query q1 = entityManager.createQuery("delete from Menu ");
         q1.executeUpdate();

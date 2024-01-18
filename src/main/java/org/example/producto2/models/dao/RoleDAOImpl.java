@@ -37,17 +37,20 @@ public class RoleDAOImpl implements RoleDAO {
     }
 
     @Override
+    @Transactional
     public void update(Role role) {
 
             entityManager.merge(role);
     }
 
     @Override
+    @Transactional
     public void delete(long id) {
         entityManager.remove(findById(id));
     }
 
     @Override
+    @Transactional
     public void deleteAll() {
         Query q1 = entityManager.createQuery("delete from Role ");
         q1.executeUpdate();

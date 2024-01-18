@@ -1,6 +1,7 @@
 package org.example.producto2.security;
 
 import org.example.producto2.models.dao.UsuarioDAO;
+import org.example.producto2.models.entity.Role;
 import org.example.producto2.models.entity.Usuario;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,7 +12,8 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import java.util.ArrayList;
 
 import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
 
@@ -21,18 +23,21 @@ public class SecurityConfig {
     @Bean
     public InMemoryUserDetailsManager userDetailsManager(UsuarioDAO usuarioDAO) {
 
-        usuarioDAO.findAll();
+        ArrayList<UserDetails> userDetailsList = new ArrayList<>();
 
-        Usuario usuario2 = new Usuario();
-        usuario2.setNombre("pepe");
-        usuario2.setPassword("{noop}test123");
+        Usuario[] usuarios = usuarioDAO.findAll();
 
-        UserDetails pepe = User.builder()
-                .username(usuario2.getNombre())
-                .password(usuario2.getPassword())
-                .roles("ADMIN")
-                .build();
-        return new InMemoryUserDetailsManager(pepe);
+        for(Usuario usuario : usuarios) {
+            UserDetails userDetails = User.builder()
+                    .username(usuario.getUsername())
+                    .password("{noop}" + usuario.getPassword())
+                    .roles("ADMIN")
+                    .build();
+
+            userDetailsList.add(userDetails);
+        }
+
+        return new InMemoryUserDetailsManager(userDetailsList);
     }
 
     @Bean
@@ -67,8 +72,4 @@ public class SecurityConfig {
                 .and()
                 .logout().logoutUrl("/logout").logoutSuccessUrl("/");
     }*/
-
-    /*
-
-     */
 }

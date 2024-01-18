@@ -37,17 +37,20 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     }
 
     @Override
+    @Transactional
     public void update(Usuario usuario) {
 
             entityManager.merge(usuario);
     }
 
     @Override
+    @Transactional
     public void delete(long id) {
         entityManager.remove(findById(id));
     }
 
     @Override
+    @Transactional
     public void deleteAll() {
         Query q1 = entityManager.createQuery("delete from Usuario ");
         q1.executeUpdate();
