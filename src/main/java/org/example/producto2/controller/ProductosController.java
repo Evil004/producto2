@@ -40,7 +40,7 @@ public class ProductosController {
     @GetMapping("/productos/update/{id}")
     public String updateProduct(Model model, @PathVariable(value = "id") final int id) {
 
-        Producto producto = ProductService.findByID(id);
+        Producto producto = ProductService.findByID(id  );
 
         model.addAttribute("product", producto);
         return "update_product";

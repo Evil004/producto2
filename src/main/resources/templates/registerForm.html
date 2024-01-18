@@ -79,6 +79,11 @@
                             </div>
                         </div>
 
+                        <select class="form-select" aria-label="Default select example" id="roles"
+                                name="roles" th:object="${roles}">
+                            <option th:each="role : ${roles}" th:value="${role.id}" th:text="${role.name}"></option>
+                        </select>
+
                         <button class="btn btn-primary" type="submit">Submit</button>
                     </form>
                 </div>

@@ -1,6 +1,8 @@
 package org.example.producto2.models.entity;
 
 import jakarta.persistence.*;
+import org.springframework.stereotype.Repository;
+
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -11,14 +13,19 @@ public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+
+    @Basic
+    @Column(name = "name")
     private String name;
 
     public Role(String name) {
         this.name = name;
     }
 
-    public Role(){}
+    public Role() {
+    }
 
     @ManyToMany(mappedBy = "rolesAssociated", fetch = FetchType.LAZY)
     private Set<Usuario> usersAssociated = new LinkedHashSet<>();
@@ -45,5 +52,12 @@ public class Role {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+
+    @Override
+    public String toString() {
+
+        return "Role{ id: " + id + ", name: " + name + "}";
     }
 }
