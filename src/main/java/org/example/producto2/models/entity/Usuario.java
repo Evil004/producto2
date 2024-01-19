@@ -105,7 +105,13 @@ public class Usuario {
     public Usuario() {
     }
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    public Usuario(String username, String password, Set<Role> rolesAssociated) {
+        this.username = username;
+        this.password = password;
+        this.rolesAssociated = rolesAssociated;
+    }
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade =  CascadeType.MERGE)
     @JoinTable(name = "users_roles",
             joinColumns = {
                     @JoinColumn(name = "user_id", referencedColumnName =

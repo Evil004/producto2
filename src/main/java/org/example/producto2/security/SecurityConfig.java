@@ -1,9 +1,11 @@
 package org.example.producto2.security;
 
-import org.example.producto2.models.dao.UsuarioDAO;
+import org.example.producto2.models.dao.*;
 import org.example.producto2.models.entity.Role;
 import org.example.producto2.models.entity.Usuario;
+import org.example.producto2.seeds.Seeds;
 import org.hibernate.Hibernate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -22,8 +24,21 @@ import static org.springframework.security.web.util.matcher.AntPathRequestMatche
 @Configuration
 public class SecurityConfig {
 
+    @Autowired
+    MenuDAOImpl menuRepository;
+    @Autowired
+    ProductoDAOImpl productRepository;
+    @Autowired
+    UsuarioDAOImpl usuarioRepository;
+    @Autowired
+    RoleDAOImpl roleRepository;
+
     @Bean
     public InMemoryUserDetailsManager userDetailsManager(UsuarioDAO usuarioDAO) {
+
+        Seeds seeds = new Seeds(menuRepository, productRepository, usuarioRepository, roleRepository);
+
+        seeds.creationUsers();
 
         ArrayList<UserDetails> userDetailsList = new ArrayList<>();
 

@@ -2,6 +2,8 @@ package org.example.producto2;
 
 import org.example.producto2.models.dao.MenuDAOImpl;
 import org.example.producto2.models.dao.ProductoDAOImpl;
+import org.example.producto2.models.dao.RoleDAOImpl;
+import org.example.producto2.models.dao.UsuarioDAOImpl;
 import org.example.producto2.seeds.Seeds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -16,6 +18,10 @@ public class Producto2Application {
     MenuDAOImpl menuRepository;
     @Autowired
     ProductoDAOImpl productRepository;
+    @Autowired
+    UsuarioDAOImpl usuarioRepository;
+    @Autowired
+    RoleDAOImpl roleRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(Producto2Application.class, args);
@@ -23,7 +29,7 @@ public class Producto2Application {
 
     @Bean
     public CommandLineRunner commandLineRunner () {
-        Seeds seeds = new Seeds(menuRepository, productRepository);
+        Seeds seeds = new Seeds(menuRepository, productRepository, usuarioRepository, roleRepository);
         return runner -> {
             seeds.generateSeeds();
         };

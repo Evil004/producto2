@@ -27,7 +27,7 @@ public class Role {
     public Role() {
     }
 
-    @ManyToMany(mappedBy = "rolesAssociated", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "rolesAssociated", fetch = FetchType.EAGER)
     private Set<Usuario> usersAssociated = new LinkedHashSet<>();
 
     public Set<Usuario> getUsersAssociated() {

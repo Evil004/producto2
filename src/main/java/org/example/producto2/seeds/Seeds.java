@@ -2,19 +2,32 @@ package org.example.producto2.seeds;
 
 import org.example.producto2.models.dao.MenuDAOImpl;
 import org.example.producto2.models.dao.ProductoDAOImpl;
+import org.example.producto2.models.dao.RoleDAOImpl;
+import org.example.producto2.models.dao.UsuarioDAOImpl;
 import org.example.producto2.models.entity.Menu;
 import org.example.producto2.models.entity.Producto;
+import org.example.producto2.models.entity.Role;
+import org.example.producto2.models.entity.Usuario;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class Seeds {
     private MenuDAOImpl menuRepository;
     private ProductoDAOImpl productRepository;
 
-    public Seeds(MenuDAOImpl menuRepository, ProductoDAOImpl productRepository)  {
+    private UsuarioDAOImpl usuarioRepository;
+
+    private RoleDAOImpl roleRepository;
+
+
+    public Seeds(MenuDAOImpl menuRepository, ProductoDAOImpl productRepository, UsuarioDAOImpl usuarioRepository, RoleDAOImpl roleRepository)  {
         this.menuRepository = menuRepository;
         this.productRepository = productRepository;
+        this.usuarioRepository = usuarioRepository;
+        this.roleRepository = roleRepository;
     }
 
     public void generateSeeds(){
@@ -46,6 +59,20 @@ public class Seeds {
             productRepository.save(productSetas);
         }
 
+    }
+
+    public void creationUsers() {
+        Usuario[] usuarios = usuarioRepository.findAll();
+
+        Set<Role> roles = new HashSet<Role>();
+
+        roles.add(roleRepository.findById(1));
+
+        Usuario admin = new Usuario("admin", "admin", roles);
+
+        if(usuarios.length == 0) {
+            usuarioRepository.save(admin);
+        }
     }
 }
 
